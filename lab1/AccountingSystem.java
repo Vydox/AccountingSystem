@@ -8,11 +8,11 @@ public class AccountingSystem {
     protected ArrayList<Building> Buildings = new ArrayList<>();
 
     public void status() {
-        System.out.println("There are " + Buildings.size() + " buildings in your system");
+        System.out.println("There are " + Buildings.size() + " buildings in your system\n");
     }
 
     public void createBuilding() {
-        System.out.println("Creating new building\n");
+        System.out.println("Creating new building...\n");
         Scanner in = new Scanner(System.in);
         int f_a;
         System.out.println("Enter amount of flats");
@@ -21,14 +21,18 @@ public class AccountingSystem {
         System.out.println("Enter number of flats per floor");
         fpf = in.nextInt();
         Buildings.add(new Building(f_a, fpf));
+        System.out.println("New building is successfully created");
     }
 
     public void deleteBuilding(int num) {
+        System.out.println("Deleting building " + num + "...");
         Buildings.remove(num-1);
+        System.out.println("Building " + num + " has been successfully deleted");
     }
 
     public void getFullBuildingInfo(int num) {
         System.out.println("Building " + num);
+        Buildings.get(num-1).showTotalFlats();
         Buildings.get(num-1).ShowTotalArea();
         Buildings.get(num-1).ShowTotalResidents();
         Buildings.get(num-1).ShowTotalFloors();
@@ -36,9 +40,11 @@ public class AccountingSystem {
 
     public void getFullSystemInfo() {
         status();
-        for (int i = 1; i <= Buildings.size(); i++) {
-            getFullBuildingInfo(i);
-            System.out.println("\n");
+        if (Buildings.size() != 0) {
+            for (int i = 1; i <= Buildings.size(); i++) {
+                getFullBuildingInfo(i);
+                System.out.println("\n");
+            }
         }
     }
 

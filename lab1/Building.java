@@ -29,6 +29,9 @@ public class Building {
     }
 
 
+    public void showTotalFlats() {
+        System.out.println("There are " + this.total_flats + " flats in this building");
+    }
     public void ShowTotalArea() {
         System.out.println("Total area of this building is " + this.total_area);
     }
@@ -63,7 +66,6 @@ public class Building {
         private int flats_per_floor;
         private double floor_area;
         private int floor_residents;
-        /*protected ArrayList<Flat> flats = new ArrayList<>();*/
 
         Floor(int fpf) {
             this.flats_per_floor = fpf;
