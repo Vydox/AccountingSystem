@@ -12,16 +12,30 @@ public class Building {
     private int total_floors;
     private int total_flats;
     private int total_residents;
-    private ArrayList<Floor> floors = new ArrayList<Floor>();
+    protected ArrayList<Floor> floors = new ArrayList<>();
+    protected ArrayList<Floor.Flat> flats = new ArrayList<>();
+
+    public double GetTotalArea() {
+        return total_area;
+    }
+    public int GetTotalResidents() {
+        return total_residents;
+    }
+    public int GetTotalFlats() {
+        return total_flats;
+    }
+    public int GetTotalFloors() {
+        return total_floors;
+    }
 
 
-    public void GetTotalArea() {
+    public void ShowTotalArea() {
         System.out.println("Total area of this building is " + this.total_area);
     }
-    public void GetTotalResidents() {
+    public void ShowTotalResidents() {
         System.out.println("Total amount of residents of this building is " + this.total_residents);
     }
-    public void GetTotalFloors() {
+    public void ShowTotalFloors() {
         System.out.println("There are " + this.total_floors + " floors in this building");
     }
 
@@ -49,7 +63,7 @@ public class Building {
         private int flats_per_floor;
         private double floor_area;
         private int floor_residents;
-        private ArrayList<Flat> flats = new ArrayList<Flat>();
+        /*protected ArrayList<Flat> flats = new ArrayList<>();*/
 
         Floor(int fpf) {
             this.flats_per_floor = fpf;
@@ -59,7 +73,7 @@ public class Building {
                 System.out.println("Setting flat №" + (i+1));
                 flats.add(new Flat());
                 this.floor_area += flats.get(i).flat_area;
-                this.floor_residents += flats.get(i).residents_amount;
+                this.floor_residents += flats.get(i).flat_residents;
                 System.out.println("\n");
             }
         }
@@ -69,7 +83,7 @@ public class Building {
 
 
         public class Flat {
-            private final int residents_amount;
+            private final int flat_residents;
             private final double flat_area;
 
             Flat() {
@@ -77,7 +91,14 @@ public class Building {
                 System.out.print("Enter area of this flat: ");
                 this.flat_area = in.nextDouble();
                 System.out.print("Enter amount of residents of this flat: ");
-                this.residents_amount = in.nextInt();
+                this.flat_residents = in.nextInt();
+            }
+
+            public double GetFlatArea() {
+                return flat_area;
+            }
+            public int GetFlatResidents() {
+                return flat_residents;
             }
         }
     }
