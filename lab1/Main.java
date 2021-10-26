@@ -11,19 +11,16 @@ public class Main {
 
 
 
-        int f_a;
-        System.out.println("Enter amount of flats");
-        f_a = in.nextInt();
+        AccountingSystem AS = new AccountingSystem();
 
-        int fpf;
-        System.out.println("Enter number of flats per floor");
-        fpf = in.nextInt();
+        AS.CreateBuilding();
 
+        AS.CreateBuilding();
 
-        Building H1 = new Building(f_a, fpf);
-        H1.GetTotalResidents();
-        H1.GetTotalArea();
-        H1.GetTotalFloors();
+        AS.CreateBuilding();
+
+        AS.getFullSystemInfo();
+
 
     }
 }
