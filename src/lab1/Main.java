@@ -1,5 +1,6 @@
 package lab1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -19,13 +20,19 @@ public class Main {
             System.out.println("\nWhat do you want to do?");
             System.out.println("See system status ------ 1");
             System.out.println("Add building ----------- 2");
-            System.out.println("Delete building -------- 3");
-            System.out.println("Get full building info - 4");
-            System.out.println("Compare buildings ------ 5");
-            System.out.println("Compare flats ---------- 6");
+            if (AS.Buildings.size() > 0) {
+                System.out.println("Delete building -------- 3");
+                System.out.println("Get full building info - 4");
+            }
+            if (AS.Buildings.size() > 1) {
+                System.out.println("Compare buildings ------ 5");
+                System.out.println("Compare flats ---------- 6");
+            }
             System.out.println("Exit ------------------- 7\n");
 
             int choice = in.nextInt();
+
+
 
             switch (choice) {
                 case 1:
@@ -64,7 +71,10 @@ public class Main {
                     AS.compareFlats(num_comp_b1, num_comp_f1, num_comp_b2, num_comp_f2);
                     break;
                 case 7:
+                    System.out.println("Have a nice day!");
                     System.exit(0);
+                default:
+                    System.out.println("Incorrect input, try again");
 
 
             }

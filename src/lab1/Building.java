@@ -2,6 +2,7 @@ package lab1;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -88,12 +89,16 @@ public class Building {
             private final int flat_residents;
             private final double flat_area;
 
-            Flat() {
+            Flat() throws InputMismatchException {
                 Scanner in = new Scanner(System.in);
                 System.out.print("Enter area of this flat: ");
                 this.flat_area = in.nextDouble();
+                if (flat_area <= 0)
+                    throw new InputMismatchException("Incorrect input");
                 System.out.print("Enter amount of residents of this flat: ");
                 this.flat_residents = in.nextInt();
+                if (flat_residents <= 0)
+                    throw new InputMismatchException("Incorrect input");
             }
 
             public double GetFlatArea() {
