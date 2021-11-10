@@ -8,9 +8,6 @@ public class AccountingSystem {
 
     protected ArrayList<Building> Buildings = new ArrayList<>();
 
-    public void status() {
-        System.out.println("There are " + Buildings.size() + " buildings in your system\n");
-    }
 
     public void createBuilding() throws InputMismatchException {
         try {
@@ -49,14 +46,14 @@ public class AccountingSystem {
         if (num > 0 && num <= Buildings.size()) {
             System.out.println("Building " + num);
             Buildings.get(num - 1).showTotalFlats();
-            Buildings.get(num - 1).ShowTotalArea();
-            Buildings.get(num - 1).ShowTotalResidents();
-            Buildings.get(num - 1).ShowTotalFloors();
+            Buildings.get(num - 1).showTotalArea();
+            Buildings.get(num - 1).showTotalResidents();
+            Buildings.get(num - 1).showTotalFloors();
         } else System.out.println("Incorrect input: there is no building with such number");
     }
 
     public void getFullSystemInfo() {
-        status();
+        System.out.println("There are " + Buildings.size() + " buildings in your system\n");
         if (Buildings.size() != 0) {
             for (int i = 1; i <= Buildings.size(); i++) {
                 getFullBuildingInfo(i);
@@ -69,26 +66,33 @@ public class AccountingSystem {
         try {
             if (num1 <= 0 || num1 > Buildings.size() || num2 <= 0 || num2 > Buildings.size())
                 throw new InputMismatchException();
+            //Comparing amount of flats
+            if (Buildings.get(num1 - 1).getTotalFlats() > Buildings.get(num2 - 1).getTotalFlats()) {
+                System.out.println("Building " + num1 + " has more flats than building " + num2);
+            } else if (Buildings.get(num1 - 1).getTotalFlats() < Buildings.get(num2 - 1).getTotalFlats()) {
+                System.out.println("Building " + num2 + " has more flats than building " + num1);
+            } else System.out.println("Building " + num1 + " and building " + num2 + " have the same amount of flats");
+
             //Comparing area
-            if (Buildings.get(num1 - 1).GetTotalArea() > Buildings.get(num2 - 1).GetTotalArea()) {
+            if (Buildings.get(num1 - 1).getTotalArea() > Buildings.get(num2 - 1).getTotalArea()) {
                 System.out.println("Building " + num1 + " is bigger than building " + num2);
-            } else if (Buildings.get(num1 - 1).GetTotalArea() < Buildings.get(num2 - 1).GetTotalArea()) {
+            } else if (Buildings.get(num1 - 1).getTotalArea() < Buildings.get(num2 - 1).getTotalArea()) {
                 System.out.println("Building " + num2 + " is bigger than building " + num1);
             } else System.out.println("Building " + num1 + " and building " + num2 + " have the same area");
 
 
             //Comparing amount of residents
-            if (Buildings.get(num1 - 1).GetTotalResidents() > Buildings.get(num2 - 1).GetTotalResidents()) {
+            if (Buildings.get(num1 - 1).getTotalResidents() > Buildings.get(num2 - 1).getTotalResidents()) {
                 System.out.println("Building " + num1 + " has more residents than building " + num2);
-            } else if (Buildings.get(num1 - 1).GetTotalResidents() < Buildings.get(num2 - 1).GetTotalResidents()) {
+            } else if (Buildings.get(num1 - 1).getTotalResidents() < Buildings.get(num2 - 1).getTotalResidents()) {
                 System.out.println("Building " + num2 + " has more residents than building " + num1);
             } else
                 System.out.println("Building " + num1 + " and building " + num2 + " have the same amount of residents");
 
             //Comparing amount of floors
-            if (Buildings.get(num1 - 1).GetTotalFloors() > Buildings.get(num2 - 1).GetTotalFloors()) {
+            if (Buildings.get(num1 - 1).getTotalFloors() > Buildings.get(num2 - 1).getTotalFloors()) {
                 System.out.println("Building " + num1 + " is higher than building " + num2);
-            } else if (Buildings.get(num1 - 1).GetTotalFloors() < Buildings.get(num2 - 1).GetTotalFloors()) {
+            } else if (Buildings.get(num1 - 1).getTotalFloors() < Buildings.get(num2 - 1).getTotalFloors()) {
                 System.out.println("Building " + num2 + " is higher than building " + num1);
             } else System.out.println("Building " + num1 + " and building " + num2 + " have the same height");
         } catch (InputMismatchException e) {
@@ -103,18 +107,18 @@ public class AccountingSystem {
             if (FNum1 <= 0 || FNum1 > Buildings.get(BNum1 - 1).flats.size() || FNum2 <= 0 || FNum2 > Buildings.get(BNum2 - 1).flats.size())
                 throw new InputMismatchException();
             //Comparing area
-            if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).GetFlatArea() > Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).GetFlatArea()) {
+            if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).getFlatArea() > Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).getFlatArea()) {
                 System.out.println("Flat " + FNum1 + " of building " + BNum1 + " is bigger than flat " + FNum2 + " of building " + BNum2);
-            } else if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).GetFlatArea() < Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).GetFlatArea()) {
+            } else if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).getFlatArea() < Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).getFlatArea()) {
                 System.out.println("Flat " + FNum2 + " of building " + BNum2 + " is bigger than flat " + FNum1 + " of building " + BNum1);
             } else
                 System.out.println("Flat " + FNum1 + " of building " + BNum1 + " and flat " + FNum2 + " of building " + BNum2 + " have the same area");
 
 
             //Comparing amount of residents
-            if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).GetFlatResidents() > Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).GetFlatResidents()) {
+            if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).getFlatResidents() > Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).getFlatResidents()) {
                 System.out.println("Flat " + FNum1 + " of building " + BNum1 + " has more residents than flat " + FNum2 + " of building " + BNum2);
-            } else if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).GetFlatResidents() < Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).GetFlatResidents()) {
+            } else if (Buildings.get(BNum1 - 1).flats.get(FNum1 - 1).getFlatResidents() < Buildings.get(BNum2 - 1).flats.get(FNum2 - 1).getFlatResidents()) {
                 System.out.println("Flat " + FNum2 + " of building " + BNum2 + " has more residents than flat " + FNum1 + " of building " + BNum1);
             } else
                 System.out.println("Flat " + FNum1 + " of building " + BNum1 + " and flat " + FNum2 + " of building " + BNum2 + " have the same amount of residents");
