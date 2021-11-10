@@ -1,11 +1,7 @@
 package lab1;
 
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
-
+import java.util.*;
 
 
 public class Building {
@@ -16,16 +12,16 @@ public class Building {
     protected ArrayList<Floor> floors = new ArrayList<>();
     protected ArrayList<Floor.Flat> flats = new ArrayList<>();
 
-    public double GetTotalArea() {
+    public double getTotalArea() {
         return total_area;
     }
-    public int GetTotalResidents() {
+    public int getTotalResidents() {
         return total_residents;
     }
-    public int GetTotalFlats() {
+    public int getTotalFlats() {
         return total_flats;
     }
-    public int GetTotalFloors() {
+    public int getTotalFloors() {
         return total_floors;
     }
 
@@ -33,13 +29,13 @@ public class Building {
     public void showTotalFlats() {
         System.out.println("There are " + this.total_flats + " flats in this building");
     }
-    public void ShowTotalArea() {
+    public void showTotalArea() {
         System.out.println("Total area of this building is " + this.total_area);
     }
-    public void ShowTotalResidents() {
+    public void showTotalResidents() {
         System.out.println("Total amount of residents of this building is " + this.total_residents);
     }
-    public void ShowTotalFloors() {
+    public void showTotalFloors() {
         System.out.println("There are " + this.total_floors + " floors in this building");
     }
 
@@ -86,8 +82,8 @@ public class Building {
 
 
         public class Flat {
-            private final int flat_residents;
-            private final double flat_area;
+            private int flat_residents;
+            private double flat_area;
 
             Flat() throws InputMismatchException {
                 Scanner in = new Scanner(System.in);
@@ -101,10 +97,10 @@ public class Building {
                     throw new InputMismatchException("Incorrect input");
             }
 
-            public double GetFlatArea() {
+            public double getFlatArea() {
                 return flat_area;
             }
-            public int GetFlatResidents() {
+            public int getFlatResidents() {
                 return flat_residents;
             }
         }
