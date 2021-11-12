@@ -2,11 +2,12 @@ package lab1;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class AccountingSystem {
 
-    protected ArrayList<Building> Buildings = new ArrayList<>();
+    protected List<Building> Buildings = new ArrayList<>();
 
 
     public void createBuilding() throws InputMismatchException {
