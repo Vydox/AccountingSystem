@@ -12,6 +12,19 @@ public class Building {
     protected List<Floor> floors = new ArrayList<>();
     protected List<Floor.Flat> flats = new ArrayList<>();
 
+    public void setTotalArea(double area) {
+        totalArea = area;
+    }
+    public void setTotalResidents(int residents) {
+        totalResidents = residents;
+    }
+    public void setTotalFlats(int flats) {
+        totalFlats = flats;
+    }
+    public void setTotalFloors(int floors) {
+        totalFloors = floors;
+    }
+
     public double getTotalArea() {
         return totalArea;
     }
@@ -39,7 +52,14 @@ public class Building {
         System.out.println("There are " + this.totalFloors + " floors in this building");
     }
 
-    Building(int flats_amount, int flatsPerFloor) {
+    public Building() {
+        totalArea = 0;
+        totalFloors = 0;
+        totalFlats = 0;
+        totalResidents = 0;
+    }
+
+    public Building(int flats_amount, int flatsPerFloor) {
         this.totalFlats = flats_amount;
         this.totalArea = 0;
         this.totalResidents = 0;
