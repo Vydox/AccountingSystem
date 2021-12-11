@@ -16,17 +16,15 @@ class AccountingSystemTest {
     public void setUp() {
         AS = new AccountingSystem();
 
-        AS.createBuilding();
-        AS.Buildings.get(0).setTotalFlats(10);
-        AS.Buildings.get(0).setTotalArea(100.0);
-        AS.Buildings.get(0).setTotalResidents(20);
-        AS.Buildings.get(0).setTotalFloors(5);
+        AS.createBuilding(2, 2);
+        AS.setFlat(0, 0, 10, 5);
+        AS.setFlat(0, 1, 20, 5);
 
-        AS.createBuilding();
-        AS.Buildings.get(1).setTotalFlats(20);
-        AS.Buildings.get(1).setTotalArea(50.0);
-        AS.Buildings.get(1).setTotalResidents(20);
-        AS.Buildings.get(1).setTotalFloors(6);
+
+        AS.createBuilding(3, 1);
+        AS.setFlat(1, 0, 1, 1);
+        AS.setFlat(1, 1, 2, 2);
+        AS.setFlat(1, 2, 3, 3);
 
     }
 
@@ -55,7 +53,7 @@ class AccountingSystemTest {
 
     @Test
     public void compareBuildingsTotalResidentsTest() {
-        Assertions.assertEquals(0, AS.compareBuildingsTotalResidents(1, 2));
+        Assertions.assertEquals(1, AS.compareBuildingsTotalResidents(1, 2));
     }
 
     @Test
@@ -65,9 +63,26 @@ class AccountingSystemTest {
 
     @Test
     public void compareBuildingsFullTest() {
-        int[] compExp = {-1, 1, 0, -1};
+        int[] compExp = {-1, 1, 1, -1};
         int[] compAct = AS.compareBuildingsFull(1, 2);
         Assertions.assertArrayEquals(compExp, compAct);
     }
 
+
+    @Test
+    public void compareFlatsTotalAreaTest() {
+        Assertions.assertEquals(1, AS.compareFlatsTotalArea(1, 1, 2, 1));
+    }
+
+    @Test
+    public void compareFlatsTotalResidentsTest() {
+        Assertions.assertEquals(1, AS.compareFlatsTotalResidents(1, 1, 2, 1));
+    }
+
+    @Test
+    public void compareFlatsFullTest() {
+        int[] compExp = {1, 1};
+        int[] compAct = AS.compareFlatsFull(1, 1, 2, 1);
+        Assertions.assertArrayEquals(compExp, compAct);
+    }
 }
