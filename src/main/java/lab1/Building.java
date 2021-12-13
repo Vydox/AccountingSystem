@@ -38,6 +38,10 @@ public class Building {
         return totalFloors;
     }
 
+    @Override
+    public String toString() {
+        return this.totalArea + "\n" + this.totalResidents + "\n" + this.totalFlats + "\n" + this.totalFloors;
+    }
 
     public void showTotalFlats() {
         System.out.println("There are " + this.totalFlats + " flats in this building");
@@ -99,15 +103,6 @@ public class Building {
             Flat() throws InputMismatchException {
                 flatArea = 0;
                 flatResidents = 0;
-                /*Scanner in = new Scanner(System.in);
-                System.out.print("Enter area of this flat: ");
-                this.flatArea = in.nextDouble();
-                if (flatArea <= 0)
-                    throw new InputMismatchException("Incorrect input");
-                System.out.print("Enter amount of residents of this flat: ");
-                this.flatResidents = in.nextInt();
-                if (flatResidents <= 0)
-                    throw new InputMismatchException("Incorrect input");*/
             }
 
             Flat(int fa, int fr) {

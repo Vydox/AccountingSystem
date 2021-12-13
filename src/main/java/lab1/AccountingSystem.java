@@ -32,11 +32,8 @@ public class AccountingSystem {
 
     public void getFullBuildingInfo(int num) {
         if (num > 0 && num <= Buildings.size()) {
-            System.out.println("Building " + num);
-            Buildings.get(num - 1).showTotalFlats();
-            Buildings.get(num - 1).showTotalArea();
-            Buildings.get(num - 1).showTotalResidents();
-            Buildings.get(num - 1).showTotalFloors();
+            System.out.println("Building " + (num+1));
+            System.out.println(Buildings.get(num));
         } else System.out.println("Incorrect input: there is no building with such number");
     }
 
@@ -94,7 +91,7 @@ public class AccountingSystem {
     }
 
     public void saveToFileSystem() throws IOException {
-        if (!new File("Database").mkdir())
+        if (!new File("Database").mkdir() && !new File("Database").exists())
         {
             throw new IOException();
         }
@@ -102,13 +99,10 @@ public class AccountingSystem {
         for (int i = 0; i < Buildings.size(); i++) {
             try {
                 FileWriter writer = new FileWriter("Database/Building" + (i+1) + ".txt");
-                writer.write((int) Buildings.get(i).getTotalArea()+ "\n");
-                writer.write(Buildings.get(i).getTotalResidents() + "\n");
-                writer.write(Buildings.get(i).getTotalFlats() + "\n");
-                writer.write(Buildings.get(i).getTotalFloors() + "\n");
+                writer.write(String.valueOf(this.Buildings.get(i)));
                 writer.close();
             } catch (IOException e) {
-
+                e.printStackTrace();
             }
         }
     }
